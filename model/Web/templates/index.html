@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laptop Price Predictor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 350px; /* Reduced max-width for compactness */
+            margin: 10px;
+            overflow: hidden;
+            max-height: 80vh; /* Restrict the height to 80% of the viewport */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        .title {
+            text-align: center;
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 12px;
+            color: #343a40;
+        }
+        .inputfield {
+            margin-bottom: 10px; /* Reduced margin */
+        }
+        .inputfield label {
+            display: block;
+            margin-bottom: 5px;
+            color: #495057;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        .inputfield input, .inputfield select {
+            width: 100%;
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            color: #495057;
+        }
+        .inputfield input[type="checkbox"] {
+            width: auto;
+        }
+        .inputfield select {
+            background-color: #f1f3f5;
+        }
+        .button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 600;
+            color: #28a745;
+        }
+        .result p {
+            margin: 0;
+        }
+        /* Scrollbar in case form content is taller than available height */
+        .container {
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Laptop Price Predictor</div>
+        <form action="/" method="POST">
+            <div class="inputfield">
+                <label for="ram">RAM (GB)</label>
+                <input type="text" name="ram" required>
+            </div>
+            <div class="inputfield">
+                <label for="weight">Weight (kg)</label>
+                <input type="text" name="weight" required>
+            </div>
+            <div class="inputfield">
+                <label for="touchscreen">Touch Screen</label>
+                <input type="checkbox" name="touchscreen">
+            </div>
+            <div class="inputfield">
+                <label for="ips">IPS</label>
+                <input type="checkbox" name="ips">
+            </div>
+            <div class="inputfield">
+                <label for="k">4K</label>
+                <input type="checkbox" name="k">
+            </div>
+            <div class="inputfield">
+                <label for="company">Company</label>
+                <select name="company">
+                    <option value="" selected hidden>Select</option>
+                    <option value="acer">Acer</option>
+                    <option value="apple">Apple</option>
+                    <option value="asus">Asus</option>
+                    <option value="dell">Dell</option>
+                    <option value="hp">HP</option>
+                    <option value="lenovo">Lenovo</option>
+                    <option value="msi">MSI</option>
+                    <option value="toshiba">Toshiba</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="inputfield">
+                <label for="type">Type</label>
+                <select name="type">
+                    <option value="" selected hidden>Select</option>
+                    <option value="2in1">2 in 1 Convertible</option>
+                    <option value="gaming">Gaming</option>
+                    <option value="netbook">Netbook</option>
+                    <option value="notebook">Notebook</option>
+                    <option value="ultrabook">Ultrabook</option>
+                    <option value="workstation">Workstation</option>
+                </select>
+            </div>
+            <div class="inputfield">
+                <label for="os">Operating System</label>
+                <select name="os">
+                    <option value="" selected hidden>Select</option>
+                    <option value="android">Android</option>
+                    <option value="chrome os">Chrome OS</option>
+                    <option value="linux">Linux</option>
+                    <option value="mac os x">Mac OS X</option>
+                    <option value="no os">No OS</option>
+                    <option value="windows 10">Windows 10</option>
+                    <option value="windows 7">Windows 7</option>
+                    <option value="macos">macOS</option>
+                </select>
+            </div>
+            <div class="inputfield">
+                <label for="cpu">CPU</label>
+                <select name="cpu">
+                    <option value="" selected hidden>Select</option>
+                    <option value="amd">AMD</option>
+                    <option value="intel">Intel</option>
+                    <option value="i3">Intel i3</option>
+                    <option value="i5">Intel i5</option>
+                    <option value="i7">Intel i7</option>
+                </select>
+            </div>
+            <div class="inputfield">
+                <label for="gpu">GPU</label>
+                <select name="gpu">
+                    <option value="" selected hidden>Select</option>
+                    <option value="amd">AMD</option>
+                    <option value="intel">Intel</option>
+                    <option value="nvidia">Nvidia</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <button class="button" type="submit">Predict Price</button>
+        </form>
+
+        {% if pred %}
+        <div class="result">
+            <p>Predicted Price: LKR {{ pred }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
